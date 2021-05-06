@@ -1,9 +1,12 @@
-function SignuP(){
-    return(
-       <>
-           <h3>SignuP</h3>
-       </>
+import './style';
+import React from 'react';
+
+function SignUp() {
+  return (
+    <>
+      <h3>SignUp</h3>
+    </>
   );
 }
 
-export default SignuP;
+export default SignUp;
