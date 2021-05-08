@@ -27,3 +27,16 @@ code {
   font-family: 'Roboto', source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+img,
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
