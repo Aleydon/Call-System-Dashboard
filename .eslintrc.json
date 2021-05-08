@@ -5,18 +5,21 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "airbnb"
+        "airbnb",
+        "plugin:prettier/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersion": 12,
+        "ecmaVersion": 2018,
         "sourceType": "module"
     },
     "plugins": [
         "react",
-        "prettier", "react-hooks", "eslint-plugin-import-helpers"
+        "prettier",
+        "react-hooks",
+        "eslint-plugin-import-helpers"
     ],
     "rules": {
     "prettier/prettier": ["error"],
@@ -43,5 +46,6 @@
         "alphabetize": { "order": "asc", "ignoreCase": true }
       }
     ]
+
   }
 }
