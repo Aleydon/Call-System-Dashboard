@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import logo from '../../assets/logo.png';
 import { Container, LogoContainer, Form, Login } from './style';
@@ -38,7 +39,7 @@ function SignIn() {
           <button type="submit">Acess</button>
         </Form>
 
-        <a href="/">Create an account</a>
+        <Link to="/register">Create an account</Link>
       </Login>
     </Container>
   );
