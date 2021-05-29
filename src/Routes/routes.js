@@ -1,10 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
+import { AuthContext } from '../contexts/Auth';
+
 const RoutesWrapper = ({ component: Component, isPrivate, ...rest }) => {
-  const loading = false;
-  const signed = true;
+  const { signed, loading } = useContext(AuthContext);
 
   if (loading) {
     return <div />;
