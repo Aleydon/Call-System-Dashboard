@@ -1,17 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import logo from '../../assets/logo.png';
+import { AuthContext } from '../../contexts/Auth';
 import { Container, LogoContainer, Form, Login } from './style';
 
-function SignUp() {
+function SignUpPage() {
+  const { signUp } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
 
   function handleCadaster(e) {
     e.preventDefault();
-    console.log('hueue');
+    if (name !== '' && email !== '' && password !== '') {
+      signUp(email, password, name);
+    }
   }
 
   return (
@@ -53,4 +57,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default SignUpPage;
