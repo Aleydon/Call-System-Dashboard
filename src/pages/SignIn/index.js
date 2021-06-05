@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import logo from '../../assets/logo.png';
+import { AuthContext } from '../../contexts/Auth';
 import { Container, LogoContainer, Form, Login } from './style';
 
 function SignIn() {
+  const { signIn, authLoading } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   function handlelogin(e) {
     e.preventDefault();
-    console.log('hueue');
+    if (email !== '' && password !== '') {
+      signIn(email, password);
+    }
   }
 
   return (
@@ -36,7 +40,7 @@ function SignIn() {
             value={password}
           />
           <br />
-          <button type="submit">Acess</button>
+          <button type="submit">{authLoading ? 'Loading...' : 'Acess'}</button>
         </Form>
 
         <Link to="/register">Create an account</Link>

@@ -24,12 +24,12 @@ export const LogoContainer = styled.div`
 `;
 
 export const Login = styled.div`
-  background-color: #eaeaec;
   width: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  background-color: #e3e3e3;
 `;
 
 export const Form = styled.form`
