@@ -6,7 +6,7 @@ import { AuthContext } from '../../contexts/Auth';
 import { Container, LogoContainer, Form, Login } from './style';
 
 function SignUpPage() {
-  const { signUp } = useContext(AuthContext);
+  const { signUp, authLoading } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
@@ -48,7 +48,9 @@ function SignUpPage() {
             value={password}
           />
           <br />
-          <button type="submit">Create account</button>
+          <button type="submit">
+            {authLoading ? 'Loading...' : 'Create account'}
+          </button>
         </Form>
 
         <Link to="/">Already have an account</Link>
