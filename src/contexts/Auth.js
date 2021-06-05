@@ -7,7 +7,7 @@ export const AuthContext = createContext({});
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [loadingAuth, setLoadingAuth] = useState(false);
+  const [authLoading, setAuthLoading] = useState(false);
 
   useEffect(() => {
     function loadStorage() {
@@ -57,25 +57,52 @@ function AuthProvider({ children }) {
   }
 
   async function signIn(email, password) {
-    setLoadingAuth(true);
+    setAuthLoading(true);
     await firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then(async (value) => console.log(value))
-      .catch((err) => console.log(err));
+      .then(async (value) => {
+        const { uid } = value.user;
+        const userProfile = await firebase
+          .firestore()
+          .collection('users')
+          .doc(uid)
+          .get();
+        const data = {
+          uid,
+          name: userProfile.data().name,
+          avatarUrl: userProfile.data().avatarUrl,
+          email: value.user.email
+        };
+        setUser(data);
+        storageUserSave(data);
+        setAuthLoading(false);
+      })
+      .catch((err) => setLoading(false));
   }
 
   async function signOut() {
     await firebase
       .auth()
       .signOut()
-      .then((resolve) => console.log(`SignOut sucessful ${resolve}`))
+      .then(() => {
+        localStorage.removeItem('@loggedUser');
+        setUser(null);
+      })
       .catch((err) => console.log(`SignOut error ${err}`));
   }
 
   return (
     <AuthContext.Provider
-      value={{ signed: !!user, user, loading, signIn, signUp, signOut }}
+      value={{
+        signed: !!user,
+        user,
+        loading,
+        signIn,
+        signUp,
+        signOut,
+        authLoading
+      }}
     >
       {children}
     </AuthContext.Provider>
