@@ -37,17 +37,19 @@ export const Form = styled.form`
   width: 90%;
   flex-direction: column;
 
-  h2 {
-    text-align: center;
-    margin: 5px 0;
-  }
-
   input {
     margin: 7px;
     height: 30px;
     border: 1px solid gray;
     border-radius: 7px;
-    padding: 6px;
+    flex-direction: row;
+    width: 100%;
+    padding: 10px;
+  }
+
+  h2 {
+    text-align: center;
+    margin: 5px 0;
   }
 
   button {
@@ -62,5 +64,16 @@ export const Form = styled.form`
   button:hover {
     background-color: #181c2e;
     color: #fff;
+  }
+`;
+
+export const Input = styled.div`
+  display: flex;
+  border-radius: 7px;
+  flex-direction: row;
+  align-items: center;
+
+  svg {
+    margin-left: 5px;
   }
 `;
