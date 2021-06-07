@@ -1,0 +1,17 @@
+a {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  padding-top: 5px;
+  align-items: center;
+  color: #e3e3e3;
+}
+
+a:hover {
+  background-color: #121212;
+}
+
+a svg {
+  margin-right: 1.5em;
+  transition: ease-in-out 0.7s;
+}
