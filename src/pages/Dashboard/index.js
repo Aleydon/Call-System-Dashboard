@@ -1,6 +1,7 @@
 /* eslint-disable react/button-has-type */
 import React, { useContext } from 'react';
 
+import Header from '../../components/Header';
 import { AuthContext } from '../../contexts/Auth';
 
 function Dashboard() {
@@ -11,6 +12,7 @@ function Dashboard() {
   }
   return (
     <>
+      <Header />
       <h3>Dashboard</h3>
       <button onClick={signOutAplicattion}>Sign Out</button>
     </>
