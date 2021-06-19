@@ -18,8 +18,8 @@ const Routes = () => {
           component={Dashboard}
           isPrivate
         />
-        <RoutesWrapper exact path="/profile" component={Profile} isPrivate />
-        <RoutesWrapper exact path="/register" component={SignUp} isPrivate />
+        <RoutesWrapper path="/profile" component={Profile} isPrivate />
+        <RoutesWrapper path="/register" component={SignUp} />
       </Switch>
     </>
   );
