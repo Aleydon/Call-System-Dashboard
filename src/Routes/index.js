@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch } from 'react-router-dom';
 
+import Customers from '../pages/Customers';
 import Dashboard from '../pages/Dashboard';
 import Profile from '../pages/Profile';
 import SignIn from '../pages/SignIn';
@@ -18,8 +19,14 @@ const Routes = () => {
           component={Dashboard}
           isPrivate
         />
-        <RoutesWrapper path="/profile" component={Profile} isPrivate />
-        <RoutesWrapper path="/register" component={SignUp} />
+        <RoutesWrapper exact path="/profile" component={Profile} isPrivate />
+        <RoutesWrapper exact path="/register" component={SignUp} />
+        <RoutesWrapper
+          exact
+          path="/customers"
+          component={Customers}
+          isPrivate
+        />
       </Switch>
     </>
   );
