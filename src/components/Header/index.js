@@ -2,11 +2,9 @@ import React, { useContext } from 'react';
 import { FiHome, FiUser, FiSettings } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
-import './style.css';
-
 import avatar from '../../assets/avatar.png';
 import { AuthContext } from '../../contexts/Auth';
-import { Container, Cover, ProfileAvatar } from './style';
+import { Container, Cover, ProfileAvatar, Menu } from './style';
 
 function Header() {
   const { user } = useContext(AuthContext);
@@ -18,18 +16,20 @@ function Header() {
           alt="Profile Avatar"
         />
       </Cover>
-      <Link to="/dashboard">
-        <FiHome size={20} color="#fff" />
-        Calls
-      </Link>
-      <Link to="/dashboard">
-        <FiUser size={20} color="#fff" />
-        Clients
-      </Link>
+      <Menu>
+        <Link to="/dashboard">
+          <FiHome size={20} color="#fff" />
+          Calls
+        </Link>
+        <Link to="/dashboard">
+          <FiUser size={20} color="#fff" />
+          Clients
+        </Link>
 
-      <Link to="/profile">
-        <FiSettings size={20} color="#fff" /> Settings
-      </Link>
+        <Link to="/profile">
+          <FiSettings size={20} color="#fff" /> Settings
+        </Link>
+      </Menu>
     </Container>
   );
 }
