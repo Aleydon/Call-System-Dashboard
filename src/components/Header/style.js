@@ -42,6 +42,7 @@ export const Menu = styled.div`
     padding-top: 5px;
     align-items: center;
     color: #e3e3e3;
+    margin-top: 5px;
   }
 
   a:hover {
