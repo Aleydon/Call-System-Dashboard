@@ -54,9 +54,10 @@ export const LabelAvatar = styled.label`
 
   img {
     margin-bottom: 6px;
-    border-radius: 5px;
     object-fit: cover;
     width: 150px;
+    border-radius: 50%;
+    height: 150px;
   }
 `;
 
