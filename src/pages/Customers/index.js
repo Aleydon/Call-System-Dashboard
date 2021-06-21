@@ -4,16 +4,33 @@ import { FiUser } from 'react-icons/fi';
 
 import Header from '../../components/Header';
 import Title from '../../components/Title';
+import firebase from '../../services/firebaseConnection';
 import { Container, Content, Form, FormLabel } from './style';
 
 function Customers() {
-  const [businessInput, setBusinessInput] = useState('');
+  const [nameFantasy, setnameFantasy] = useState('');
   const [CNPJ, setCNPJ] = useState('');
   const [address, setAddress] = useState('');
 
-  function cadasterCustomers(e) {
+  async function cadasterCustomers(e) {
     e.preventDefault();
-    alert('test');
+
+    if (nameFantasy !== '' && CNPJ !== '' && address !== '') {
+      await firebase
+        .firestore()
+        .collection('customers')
+        .add({
+          businessName: nameFantasy,
+          cnpj: CNPJ,
+          address
+        })
+        .then(() => {
+          setnameFantasy('');
+          setCNPJ('');
+          setAddress('');
+        })
+        .catch((err) => console.log(`Business cadaster error ${err}`));
+    }
   }
 
   return (
@@ -26,15 +43,17 @@ function Customers() {
         <Content>
           <Form onSubmit={cadasterCustomers}>
             <FormLabel>
-              <label>Business:</label>
+              <label>Name Fantasy:</label>
               <input
+                required
                 type="text"
-                placeholder="business"
-                value={businessInput}
-                onChange={(e) => setBusinessInput(e.target.value)}
+                placeholder="Name fantasy"
+                value={nameFantasy}
+                onChange={(e) => setnameFantasy(e.target.value)}
               />
               <label>CNPJ:</label>
               <input
+                required
                 type="text"
                 placeholder="CNPJ"
                 value={CNPJ}
@@ -42,8 +61,9 @@ function Customers() {
               />
               <label>Address:</label>
               <input
+                required
                 type="text"
-                placeholder="address"
+                placeholder="Address"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
               />
