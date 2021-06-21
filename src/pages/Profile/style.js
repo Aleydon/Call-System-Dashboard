@@ -71,16 +71,20 @@ export const FormLabel = styled.label`
     border: 0;
     border-radius: 5px;
     max-width: 600px;
+    width: 300px;
+    height: 20px;
+    padding: 5px;
+    margin-top: 5px;
   }
   button {
-    max-width: 600px;
     margin-top: 5px;
+    width: 300px;
   }
 `;
 
 export const LogoutContainer = styled.div`
   background-color: transparent;
-  padding: 8px 20px;
+  padding: 8px 15px;
   border: 1px solid #121212;
   font-size: 1.5em;
   border-radius: 5px;
