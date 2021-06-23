@@ -44,3 +44,59 @@ export const Content = styled.div`
     margin-left: 5px;
   }
 `;
+
+export const Table = styled.table`
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+
+  caption {
+    font-size: 1.6em;
+    margin: 0.5em 0 0.75em;
+  }
+
+  tr {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 0.35em;
+  }
+
+  th,
+  td {
+    padding: 0.62em;
+    text-align: center;
+  }
+
+  th {
+    font-size: 0.85em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  button {
+    border: 0;
+    padding: 5px;
+    margin-right: 2px;
+    align-items: center;
+    display: inline-block;
+    border-radius: 4px;
+  }
+
+  @media screen and (max-width: 600px) {
+    border: 0;
+
+    thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+  }
+`;
