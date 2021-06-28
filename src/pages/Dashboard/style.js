@@ -20,6 +20,7 @@ export const Content = styled.div`
   }
 
   a {
+    margin-top: 20px;
     float: right;
     margin-bottom: 1.2em;
     background-color: #83bf02;
