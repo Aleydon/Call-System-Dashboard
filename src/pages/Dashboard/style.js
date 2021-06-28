@@ -86,6 +86,11 @@ export const Table = styled.table`
     border-radius: 4px;
   }
 
+  svg {
+    display: flex;
+    align-self: center;
+  }
+
   @media screen and (max-width: 600px) {
     border: 0;
 
