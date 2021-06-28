@@ -37,10 +37,9 @@ export const ProfileAvatar = styled.img`
 export const Menu = styled.div`
   a {
     display: flex;
-    flex-direction: row;
     text-decoration: none;
-    padding-top: 5px;
     align-items: center;
+    padding: 3px;
     color: #e3e3e3;
     margin-top: 5px;
   }
