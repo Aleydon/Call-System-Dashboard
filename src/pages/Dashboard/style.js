@@ -23,7 +23,6 @@ export const Content = styled.div`
     margin-top: 20px;
     float: right;
     margin-bottom: 1.2em;
-    background-color: #83bf02;
     color: #fff;
     border: 0;
     padding: 0.3em;
@@ -33,10 +32,11 @@ export const Content = styled.div`
     font-weight: 600;
     transition: 0.9ms;
     border-radius: 5px;
+    background-color: #184d47;
   }
 
   a:hover {
-    background-color: #5fd204;
+    background-color: #329542;
     transform: scale(1.1);
   }
 

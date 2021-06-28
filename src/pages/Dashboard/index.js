@@ -9,7 +9,7 @@ import { AuthContext } from '../../contexts/Auth';
 import { Container, Content, Table } from './style';
 
 function Dashboard() {
-  const [calls, setCalls] = useState([1]);
+  const [calls, setCalls] = useState([0]);
 
   return (
     <>
