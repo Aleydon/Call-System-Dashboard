@@ -6,7 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #121212;
+  background-color: #092532;
 `;
 
 export const LogoContainer = styled.div`
@@ -17,14 +17,15 @@ export const LogoContainer = styled.div`
   margin-bottom: 3px;
 
   img {
-    width: 600px;
+    width: 100%;
     height: 200px;
-    padding: 30px;
+    border-radius: 5px;
   }
 `;
 
 export const Login = styled.div`
   background-color: #eaeaec;
+  border-radius: 5px;
   width: 600px;
   display: flex;
   align-items: center;
@@ -37,7 +38,7 @@ export const Form = styled.form`
   width: 90%;
   flex-direction: column;
 
-  h2 {
+  h4 {
     text-align: center;
     margin: 5px 0;
   }

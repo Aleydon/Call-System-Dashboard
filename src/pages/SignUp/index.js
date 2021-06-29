@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { FiAtSign, FiUnlock, FiUser } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
-import logo from '../../assets/logo.png';
+import logo from '../../assets/cover.jpg';
 import { AuthContext } from '../../contexts/Auth';
 import { Container, LogoContainer, Form, Login, Input } from './style';
 
@@ -27,7 +27,7 @@ function SignUpPage() {
         </LogoContainer>
 
         <Form onSubmit={handleCadaster}>
-          <h2>Cadaster</h2>
+          <h4>CADASTER</h4>
 
           <Input>
             <FiUser color="#797979" size={30} />
@@ -50,8 +50,6 @@ function SignUpPage() {
               required
             />
           </Input>
-
-          <br />
 
           <Input>
             <FiUnlock size={30} color="#797979" />
