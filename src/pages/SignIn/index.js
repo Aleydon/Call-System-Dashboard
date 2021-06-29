@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { FiAtSign, FiUnlock } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
-import logo from '../../assets/logo.png';
+import logo from '../../assets/cover.jpg';
 import { AuthContext } from '../../contexts/Auth';
 import { Container, LogoContainer, Form, Login, Input } from './style';
 
@@ -26,7 +26,7 @@ function SignIn() {
         </LogoContainer>
 
         <Form onSubmit={handlelogin}>
-          <h2>Login</h2>
+          <h4>SIGN IN</h4>
           <Input>
             <FiAtSign size={30} color="#797979" />
             <input
