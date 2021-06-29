@@ -5,6 +5,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useContext } from 'react';
 import { FiSettings, FiUpload } from 'react-icons/fi';
+import { toast } from 'react-toastify';
 
 import Avatar from '../../assets/avatar.png';
 import Header from '../../components/Header';
@@ -21,7 +22,14 @@ import {
 } from './style';
 
 function Profile() {
-  const { user, signOut, setUser, storageUserSave } = useContext(AuthContext);
+  const {
+    user,
+    signOut,
+    setUser,
+    storageUserSave,
+    authLoading,
+    setAuthLoading
+  } = useContext(AuthContext);
   const [name, setName] = useState(user && user.name);
   const [avatarUrl, setAvatarUrl] = useState(user && user.avatarUrl);
   const [email, setEmail] = useState(user && user.email);
@@ -35,7 +43,6 @@ function Profile() {
         setProfileImagePhoto(image);
         setAvatarUrl(URL.createObjectURL(e.target.files[0]));
       } else {
-        alert('Select a photo');
         setProfileImagePhoto(null);
         return null;
       }
@@ -43,6 +50,7 @@ function Profile() {
   }
 
   async function handleImageUpload() {
+    setAuthLoading(true);
     const currentUID = user.uid;
     await firebase
       .storage()
@@ -69,6 +77,28 @@ function Profile() {
                 };
                 setUser(data);
                 storageUserSave(data);
+                toast.success('Profile Updated', {
+                  position: 'top-right',
+                  autoClose: 2000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: false,
+                  draggable: true,
+                  progress: undefined
+                });
+                setAuthLoading(false);
+              })
+              .catch((err) => {
+                toast.error(`Avatar Update Error ${err}`, {
+                  position: 'top-right',
+                  autoClose: 2500,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: false,
+                  draggable: true,
+                  progress: undefined
+                });
+                setAuthLoading(false);
               });
           });
       });
@@ -76,6 +106,7 @@ function Profile() {
 
   async function handleSave(e) {
     e.preventDefault();
+    setAuthLoading(true);
     if (profileImagePhoto === null && name !== '') {
       await firebase
         .firestore()
@@ -88,8 +119,29 @@ function Profile() {
           };
           setUser(data);
           storageUserSave(data);
+          toast.success('Profile Updated', {
+            position: 'top-right',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined
+          });
+          setAuthLoading(false);
         })
-        .catch((error) => console.log(`Update profile error ${error}`));
+        .catch((err) => {
+          toast.error(`Profile Update Error ${err}`, {
+            position: 'top-right',
+            autoClose: 2500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined
+          });
+          setAuthLoading(false);
+        });
     } else if (name !== '' && profileImagePhoto !== null) {
       handleImageUpload();
     }
@@ -140,7 +192,9 @@ function Profile() {
                 disabled
                 style={{ cursor: 'not-allowed' }}
               />
-              <button type="submit">Save</button>
+              <button type="submit">
+                {authLoading ? 'Uploading...' : 'Save'}
+              </button>
             </FormLabel>
           </Form>
 
