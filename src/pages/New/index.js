@@ -1,6 +1,6 @@
 /* eslint-disable no-alert */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FiPlusCircle } from 'react-icons/fi';
 
 import Header from '../../components/Header';
@@ -8,9 +8,18 @@ import Title from '../../components/Title';
 import { Container, Content, Form, FormLabel, Status } from './style';
 
 function New() {
-  function handleRegister(e) {
-    e.preventDefault();
-    alert('heehue');
+  const [about, setAbout] = useState('Support');
+  const [statusRadioButton, setStatusRadioButton] = useState('open');
+  const [complement, setComplement] = useState('');
+
+  function handleAboutSelect(e) {
+    setAbout(e.target.value);
+    console.log(about);
+  }
+
+  function handleStatusChange(e) {
+    setStatusRadioButton(e.target.value);
+    console.log(statusRadioButton);
   }
 
   return (
@@ -21,7 +30,7 @@ function New() {
           <FiPlusCircle size={25} color="#000" />
         </Title>
         <Content>
-          <Form onSubmit={handleRegister}>
+          <Form>
             <FormLabel>
               <label>Customers:</label>
               <select>
@@ -34,26 +43,44 @@ function New() {
               </select>
 
               <label>About: </label>
-              <select>
-                <option value="1" key={1}>
-                  Suport
+              <select value={about} onChange={handleAboutSelect}>
+                <option value="Support" key={1}>
+                  Support
                 </option>
-                <option value="2" key={2}>
+                <option value="Financial" key={2}>
                   Financial
                 </option>
-                <option value="3" key={3}>
+                <option value="Technical Visit" key={3}>
                   Technical visit
                 </option>
               </select>
 
               <Status>
-                <input type="radio" name="radio" value="open" />
+                <input
+                  type="radio"
+                  value="open"
+                  name="status"
+                  onChange={handleStatusChange}
+                  checked={statusRadioButton === 'open'}
+                />
                 <span>open</span>
 
-                <input type="radio" name="radio" value="progress" />
+                <input
+                  type="radio"
+                  value="progress"
+                  name="status"
+                  onChange={handleStatusChange}
+                  checked={statusRadioButton === 'progress'}
+                />
                 <span>progress</span>
 
-                <input type="radio" name="radio" value="closed" />
+                <input
+                  type="radio"
+                  value="closed"
+                  name="status"
+                  onChange={handleStatusChange}
+                  checked={statusRadioButton === 'closed'}
+                />
                 <span>closed</span>
               </Status>
             </FormLabel>
@@ -62,8 +89,9 @@ function New() {
             <textarea
               cols="5"
               rows="5"
-              placeholder="Describe the problem(optional)"
+              placeholder="Describe the problem (optional)"
               type="text"
+              onChange={(e) => setComplement(e.target.value)}
             />
             <button type="submit">Save</button>
           </Form>

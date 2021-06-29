@@ -21,23 +21,25 @@ export const Form = styled.form`
     background-color: #092532;
     color: #fff;
     height: 25px;
+    margin-top: 5px;
+    width: 300px;
+    margin-left: 9px;
+    width: 42%;
   }
 
   button:hover {
     background-color: #184d47;
   }
 
-  button {
-    margin-top: 5px;
-    width: 300px;
-  }
-
   textarea {
+    margin-left: 9px;
     height: 105px;
     border: none;
     resize: none;
-    margin-top: 5px;
-    width: 45%;
+    margin-top: 10px;
+    width: 42%;
+    padding: 0.7em;
+    margin-bottom: 15px;
   }
 `;
 
