@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 import firebase from '../services/firebaseConnection';
 
@@ -6,7 +7,6 @@ export const AuthContext = createContext({});
 
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [authLoading, setAuthLoading] = useState(false);
 
   useEffect(() => {
@@ -14,9 +14,9 @@ function AuthProvider({ children }) {
       const storageUser = localStorage.getItem('@loggedUser');
       if (storageUser) {
         setUser(JSON.parse(storageUser));
-        setLoading(false);
+        setAuthLoading(false);
       }
-      setLoading(false);
+      setAuthLoading(false);
     }
     loadStorage();
   }, []);
@@ -26,7 +26,7 @@ function AuthProvider({ children }) {
   }
 
   async function signUp(email, password, name) {
-    setLoading(true);
+    setAuthLoading(true);
     await firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -46,13 +46,29 @@ function AuthProvider({ children }) {
             };
             setUser(data);
             storageUserSave(data);
-            setLoading(false);
-          })
-          .catch((err) => console.log(`SignUp error: ${err}`));
+            setAuthLoading(false);
+            toast.success(`Welcome ${data.name}`, {
+              position: 'top-right',
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: false,
+              draggable: true,
+              progress: undefined
+            });
+          });
       })
       .catch((err) => {
-        console.log(err);
-        setLoading(false);
+        toast.error(`Sign Up Error ${err}`, {
+          position: 'top-right',
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined
+        });
+        setAuthLoading(false);
       });
   }
 
@@ -77,8 +93,28 @@ function AuthProvider({ children }) {
         setUser(data);
         storageUserSave(data);
         setAuthLoading(false);
+        toast.success(`Welcome Back ${data.name}`, {
+          position: 'top-right',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined
+        });
       })
-      .catch((err) => setLoading(false));
+      .catch((err) => {
+        toast.error(`Sign In Error ${err}`, {
+          position: 'top-right',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined
+        });
+        setAuthLoading(false);
+      });
   }
 
   async function signOut() {
@@ -89,7 +125,7 @@ function AuthProvider({ children }) {
         localStorage.removeItem('@loggedUser');
         setUser(null);
       })
-      .catch((err) => console.log(`SignOut error ${err}`));
+      .catch((err) => console.log(`SignOut Error ${err}`));
   }
 
   return (
@@ -97,11 +133,11 @@ function AuthProvider({ children }) {
       value={{
         signed: !!user,
         user,
-        loading,
         signIn,
         signUp,
         signOut,
         authLoading,
+        setAuthLoading,
         setUser,
         storageUserSave
       }}
