@@ -106,3 +106,8 @@ export const Table = styled.table`
     }
   }
 `;
+
+export const Status = styled.span`
+  background-color: #00ff00;
+  border-radius: 5px;
+`;

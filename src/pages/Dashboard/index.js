@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
 import Title from '../../components/Title';
 import { AuthContext } from '../../contexts/Auth';
-import { Container, Content, Table } from './style';
+import { Container, Content, Table, Status } from './style';
 
 function Dashboard() {
   const [calls, setCalls] = useState([0]);
@@ -48,7 +48,7 @@ function Dashboard() {
                   <td data-label="customer">Aleydon</td>
                   <td data-label="about">Computer</td>
                   <td data-label="status">
-                    <span style={{ backgroundColor: '#5cb85c' }}>Open</span>
+                    <Status>Open</Status>
                   </td>
                   <td data-label="registered">20/06/2021</td>
                   <td data-label="#">
