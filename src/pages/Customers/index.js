@@ -11,10 +11,11 @@ function Customers() {
   const [nameFantasy, setnameFantasy] = useState('');
   const [CNPJ, setCNPJ] = useState('');
   const [address, setAddress] = useState('');
+  const [loading, setLoading] = useState(false);
 
   async function cadasterCustomers(e) {
     e.preventDefault();
-
+    setLoading(true);
     if (nameFantasy !== '' && CNPJ !== '' && address !== '') {
       await firebase
         .firestore()
@@ -28,8 +29,9 @@ function Customers() {
           setnameFantasy('');
           setCNPJ('');
           setAddress('');
+          setLoading(false);
         })
-        .catch((err) => console.log(`Business cadaster error ${err}`));
+        .catch(() => setLoading(false));
     }
   }
 
@@ -68,7 +70,9 @@ function Customers() {
                 onChange={(e) => setAddress(e.target.value)}
               />
 
-              <button type="submit">Cadaster</button>
+              <button type="submit">
+                {loading ? 'Signing up...' : 'Cadaster'}
+              </button>
             </FormLabel>
           </Form>
         </Content>
