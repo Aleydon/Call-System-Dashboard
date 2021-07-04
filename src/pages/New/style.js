@@ -31,6 +31,15 @@ export const Form = styled.form`
     background-color: #184d47;
   }
 
+  label {
+    display: flex;
+    flex-direction: column;
+  }
+
+  p {
+    padding: 7px 15px;
+  }
+
   textarea {
     margin-left: 9px;
     height: 105px;
@@ -49,12 +58,14 @@ export const FormLabel = styled.label`
   padding: 0.7em;
 
   select {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 1em;
     padding: 0.7em;
     border: 0;
     border-radius: 5px;
-    max-width: 600px;
     margin-top: 5px;
+    width: 42%;
     background-color: #fff;
   }
 `;
