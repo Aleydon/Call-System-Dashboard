@@ -14,3 +14,7 @@ export const TitleContainer = styled.div`
     font-size: 1.5em;
   }
 `;
+
+export const TitleMessage = styled.span`
+  letter-spacing: 1px;
+`;

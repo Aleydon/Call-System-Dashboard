@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { TitleContainer } from './style';
+import { TitleContainer, TitleMessage } from './style';
 
 function Title({ children, name }) {
   return (
     <TitleContainer>
       {children}
-      <span>{name}</span>{' '}
+      <TitleMessage>{name}</TitleMessage>{' '}
     </TitleContainer>
   );
 }
