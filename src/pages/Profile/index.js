@@ -1,7 +1,3 @@
-/* eslint-disable consistent-return */
-/* eslint-disable no-alert */
-/* eslint-disable react/button-has-type */
-/* eslint-disable import/named */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useContext } from 'react';
 import { FiSettings, FiUpload } from 'react-icons/fi';
@@ -47,6 +43,7 @@ function Profile() {
         return null;
       }
     }
+    return false;
   }
 
   async function handleImageUpload() {
@@ -199,7 +196,9 @@ function Profile() {
           </Form>
 
           <LogoutContainer>
-            <button onClick={() => signOut()}>Logout</button>
+            <button onClick={() => signOut()} type="button">
+              Logout
+            </button>
           </LogoutContainer>
         </Container>
       </Content>
