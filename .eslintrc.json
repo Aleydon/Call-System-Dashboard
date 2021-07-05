@@ -23,21 +23,11 @@
     ],
     "rules": {
     "prettier/prettier": ["error"],
-    "import/no-named-as-default": 0,
-    "import/extensions": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "import/no-unresolved": [2, { "caseSensitive": true }],
     "eslint-disable react/no-array-index-key": 0,
-    "react-hooks/exhaustive-deps": "warn",
-    "import/prefer-default-export": "off",
     "no-console": "off",
     "react/prop-types": 0,
-    "no-unused-vars": [
-      0,
-      {
-        "argsIgnorePattern": "next"
-      }
-    ],
+    "no-unused-vars": 0,
     "import-helpers/order-imports": [
       "warn",
       {
